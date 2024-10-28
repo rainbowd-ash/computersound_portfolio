@@ -1,3 +1,6 @@
 My name is rainbow dash and this is my working portfolio for CS 416 Computer Sound & Music.
 
-Check out my [notebook](notebook.md)!
+# Clipped
+Generating a sin wave .wav file using math and other python libraries.
+
+
