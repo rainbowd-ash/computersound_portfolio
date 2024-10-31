@@ -10,7 +10,7 @@ def fft_energy_bands(waveform, sample_rate):
 	spectrum = np.fft.fft(waveform)
 	freqs = np.fft.fftfreq(len(spectrum), 1 / sample_rate)
 
-	# frequency ranges in Hz
+	# frequency band ranges in Hz
 	low_band = (0, 300)
 	mid_band = (300, 2000)
 	high_band = (2000, sample_rate // 2)
@@ -22,16 +22,14 @@ def fft_energy_bands(waveform, sample_rate):
 
 	return low_energy, mid_energy, high_energy
 
-
-def calculate_gains(low_energy, mid_energy, high_energy):
+def calculate_gains(low_energy = 1, mid_energy = 1, high_energy = 1):
 	"""Calculates the gain needed for each band to equalize their energies."""
 	target_energy = (low_energy + mid_energy + high_energy) / 3
-	low_gain = np.sqrt(target_energy / low_energy) if low_energy > 0 else 1
-	mid_gain = np.sqrt(target_energy / mid_energy) if mid_energy > 0 else 1
+	low_gain  = np.sqrt(target_energy / low_energy) if low_energy > 0 else 1
+	mid_gain  = np.sqrt(target_energy / mid_energy) if mid_energy > 0 else 1
 	high_gain = np.sqrt(target_energy / high_energy) if high_energy > 0 else 1
 
 	return low_gain, mid_gain, high_gain
-
 
 def apply_tone_filter(waveform, sample_rate, low_gain, mid_gain, high_gain):
 	"""Applies low, mid, and high tone filters with specified gains to equalize band energy."""
@@ -52,22 +50,22 @@ def apply_tone_filter(waveform, sample_rate, low_gain, mid_gain, high_gain):
 
 
 def equalize_bands(waveform, sample_rate):
-	"""Equalizes the energy in low, mid, and high frequency bands of a waveform."""
-	# Step 1: Calculate energy in each band
 	low_energy, mid_energy, high_energy = fft_energy_bands(waveform, sample_rate)
 
-	# Step 2: Calculate the gain for each band
 	low_gain, mid_gain, high_gain = calculate_gains(low_energy, mid_energy, high_energy)
 
-	# Step 3: Apply tone filters with calculated gains
 	equalized_waveform = apply_tone_filter(waveform, sample_rate, low_gain, mid_gain, high_gain)
 
 	return equalized_waveform
 
 
 def main():
-	parser = argparse.ArgumentParser(description="Equalize the frequency bands of a WAV file.")
+	parser = argparse.ArgumentParser(description="Process and equalize the frequency bands of a WAV file.")
 	parser.add_argument("wavfile", type=str, help="Path to the input WAV file")
+	parser.add_argument("--equalize", action="store_true", help="Apply equalization to balance band energies.")
+	parser.add_argument("--drop_low", action="store_true", help="Drop the low frequency band.")
+	parser.add_argument("--drop_mid", action="store_true", help="Drop the mid frequency band.")
+	parser.add_argument("--drop_high", action="store_true", help="Drop the high frequency band.")
 	args = parser.parse_args()
 
 	sample_rate, waveform = wavfile.read(args.wavfile)
@@ -75,12 +73,22 @@ def main():
 	# If stereo, take just one channel
 	if len(waveform.shape) > 1:
 		waveform = waveform[:, 0]
-
-	equalized_waveform = equalize_bands(waveform, sample_rate)
-
+	
+	if args.equalize:
+		waveform = equalize_bands(waveform, sample_rate)
+	
+	waveform = apply_tone_filter(
+		waveform, 
+		sample_rate, 
+		low_gain  = int(not args.drop_low), 
+		mid_gain  = int(not args.drop_mid), 
+		high_gain = int(not args.drop_high)
+	)
+	
 	import sounddevice as sd
-	sd.play(equalized_waveform, sample_rate)
+	sd.play(waveform, sample_rate)
 	sd.wait()
+
 
 if __name__ == "__main__":
 	main()

@@ -1,13 +1,21 @@
 My name is rainbow dash and this is my working portfolio for CS 416 Computer Sound & Music.
 
 # Clipped
-Generating a sin wave .wav file using math and other python libraries.
+Makes a file called sin.wav out of a sine wave.
+
+Makes a file called clipped.wav out of that sin wave eroded by time.
+
+Plays both sounds.
+
+Run with -h for arguments.
 
 # Tone Control
-Splitting out low/mid/high bands and playing with them
+Splitting out low/mid/high bands and playing with them.
+
+Run with -h for arguments.
 
 # Sin Wav Music
-Making a song with the computer.
+Generates a song based on a sine wave. No arguments, just does it.
 
 # Sources
 ## Samples
