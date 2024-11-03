@@ -34,7 +34,7 @@ def generate_trumpet_wave(frequency, duration=1.0, sampling_rate=44100):
 
 parser = argparse.ArgumentParser(description="Play a trumpet sound for a specified note.")
 parser.add_argument("-n", "--note", type=str, default="A4", help="Note to play (e.g., C4, D4, A4) or frequency in Hz. Default is A4.")
-parser.add_argument("-d", "--duration", type=float, default=1.0, help="Duration of the note in seconds (default is 1 second)")
+parser.add_argument("-d", "--duration", type=float, default=1.0, help="Duration of the note in seconds. Default is 1 second.")
 
 args = parser.parse_args()
 
@@ -44,7 +44,7 @@ else:
     try:
         frequency = float(args.note)
     except ValueError:
-        print("Invalid note or frequency. Please enter a note (e.g., A4) or a frequency in Hz.")
+        print("Invalid note or frequency. Please enter a note (eg: A4) or a frequency in Hz.")
         exit(1)
 
 trumpet_wave = generate_trumpet_wave(frequency, duration=args.duration)
