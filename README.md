@@ -14,7 +14,11 @@ Plays both sounds.
 Splitting out low/mid/high bands and playing with them.
 
 ## Sin Wav Music
+### Sine Wave Song
 Generates a song based on a sine wave. No arguments, just does it.
+
+### Sine Wave Generator
+Creates a wav file from the args provided in command line.
 
 ## One Perfect Note
 Plays a beatiful trumpet sound, generated via autogenesis out of a modified sine wave.
