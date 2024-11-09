@@ -1,0 +1,4 @@
+mosquito noise
+-f 900
+-a 30000
+-o mosquito.wav

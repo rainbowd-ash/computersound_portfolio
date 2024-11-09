@@ -1,3 +1,15 @@
+## 2024 11 8
+GREAT IDEA ALERT: make a mosquito noise generator that can I can overlay onto a track
+
+I also need a program to combine two wav files. probably with a volume checker.
+
+I think the mosquito effect can be combined with a wah effect.
+
+This AI dj is really coming together as a concept. I want to it be pretty annoying, but also self-confident. so it's awful but it's obviously not aware of it.
+
+## 2024 11 7
+I want to add some wet/dry mix args to my effects, and add a couple new effects. so that the ai dj can make things really wet when the weather is rainy.
+
 # Clipped
 This is the assignment, plus a little more.
 
