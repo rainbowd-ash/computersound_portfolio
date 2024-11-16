@@ -1,3 +1,10 @@
+## 2024 11 15
+Next steps:
+* Finish wah effect
+* do some research on effects library so I don't have to implement them all by hand
+* make an effects stacker (something that will run a wav through a bunch of effects in a row)
+* presets for the effects stacker - instead of having it be a complicated command line thing, hardcode a couple presets
+
 ## 2024 11 8
 GREAT IDEA ALERT: make a mosquito noise generator that can I can overlay onto a track
 
