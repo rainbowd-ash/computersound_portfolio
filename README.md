@@ -23,6 +23,10 @@ Creates a wav file from the args provided in command line.
 ## One Perfect Note
 Plays a beatiful trumpet sound, generated via autogenesis out of a modified sine wave.
 
+## Wah
+Applies a wah effect to a wav.
+
+
 # Sources
 ## Samples
 turkey_1.wav - [https://www.lofijazzsoul.com/collections/sample-packs/products/turkey-chill-sample-pack-free-download-1]

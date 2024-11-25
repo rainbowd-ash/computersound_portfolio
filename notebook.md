@@ -1,3 +1,6 @@
+## 2024 11 24
+The wah effect is in!
+
 ## 2024 11 15
 Next steps:
 * Finish wah effect
