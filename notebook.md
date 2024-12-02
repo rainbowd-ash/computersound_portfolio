@@ -1,3 +1,6 @@
+## 2024 12 2
+Completed the popgen assignment :) Added new wave styles and a envelope. 
+
 ## 2024 11 24
 The wah effect is in!
 

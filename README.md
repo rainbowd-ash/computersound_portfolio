@@ -26,6 +26,9 @@ Plays a beatiful trumpet sound, generated via autogenesis out of a modified sine
 ## Wah
 Applies a wah effect to a wav.
 
+## Popgen
+Makes a 4 chord sequence in a popular pop music style.
+
 
 # Sources
 ## Samples
